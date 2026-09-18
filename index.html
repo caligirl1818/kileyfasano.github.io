@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kiley Fasano — Design, Production & Consulting</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ── */
+    :root {
+      --ink:       #1a1a1a;
+      --ink-soft:  #555550;
+      --bg:        #f7f6f2;
+      --bg-alt:    #eeeae2;
+      --accent:    #2a52a0;   /* deep slate-blue — precise, credible, Apple-adjacent */
+      --accent-lt: #dce5f5;
+      --rule:      #d4d0c8;
+      --white:     #ffffff;
+      --serif:     'DM Serif Display', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+      --max:       1160px;
+      --gap:       clamp(2rem, 5vw, 4rem);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --ink:      #f0ede6;
+        --ink-soft: #a09c92;
+        --bg:       #181714;
+        --bg-alt:   #211f1b;
+        --accent:   #6b8fd4;
+        --accent-lt:#1e2d4a;
+        --rule:     #333028;
+        --white:    #211f1b;
+      }
+    }
+    :root[data-theme="dark"] {
+      --ink:      #f0ede6;
+      --ink-soft: #a09c92;
+      --bg:       #181714;
+      --bg-alt:   #211f1b;
+      --accent:   #6b8fd4;
+      --accent-lt:#1e2d4a;
+      --rule:     #333028;
+      --white:    #211f1b;
+    }
+
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+    img { max-width: 100%; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ── Layout helpers ── */
+    .wrap {
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 5vw, 3rem);
+    }
+    section { padding: var(--gap) 0; }
+
+    /* ── Nav ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: .01em;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: .875rem;
+      font-weight: 400;
+      color: var(--ink-soft);
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links .nav-cta {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding: clamp(4rem, 10vw, 8rem) 0 clamp(3rem, 7vw, 6rem);
+      border-bottom: 1px solid var(--rule);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: end;
+    }
+    .hero-eyebrow {
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(2.6rem, 5vw, 4rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em {
+      font-style: italic;
+      color: var(--ink-soft);
+    }
+    .hero-body {
+      font-size: 1.05rem;
+      color: var(--ink-soft);
+      max-width: 48ch;
+      line-height: 1.7;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-block;
+      padding: .75rem 1.75rem;
+      background: var(--accent);
+      color: #fff;
+      font-family: var(--sans);
+      font-size: .9rem;
+      font-weight: 500;
+      border-radius: 2px;
+      transition: opacity .15s;
+    }
+    .btn:hover { opacity: .85; }
+    .btn-ghost {
+      background: transparent;
+      color: var(--ink);
+      border: 1px solid var(--rule);
+      margin-left: .75rem;
+    }
+    .btn-ghost:hover { border-color: var(--ink-soft); opacity: 1; }
+
+    .hero-aside {
+      padding-left: 2rem;
+      border-left: 1px solid var(--rule);
+    }
+    .hero-stat {
+      margin-bottom: 1.75rem;
+    }
+    .hero-stat-num {
+      font-family: var(--serif);
+      font-size: 2.8rem;
+      line-height: 1;
+      color: var(--ink);
+    }
+    .hero-stat-label {
+      font-size: .8rem;
+      color: var(--ink-soft);
+      margin-top: .3rem;
+      line-height: 1.4;
+    }
+
+    /* ── Services ── */
+    .services { background: var(--bg-alt); }
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.5rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-header h2 {
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 3vw, 2.2rem);
+      letter-spacing: -.01em;
+    }
+    .section-tag {
+      font-size: .75rem;
+      color: var(--ink-soft);
+      font-weight: 400;
+      white-space: nowrap;
+    }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5px;
+      background: var(--rule);
+      border: 1.5px solid var(--rule);
+    }
+    .service-card {
+      background: var(--bg-alt);
+      padding: 2rem 1.75rem;
+    }
+    .service-icon {
+      width: 36px;
+      height: 36px;
+      margin-bottom: 1.25rem;
+      color: var(--accent);
+    }
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      margin-bottom: .75rem;
+      letter-spacing: -.01em;
+    }
+    .service-card p {
+      font-size: .9rem;
+      color: var(--ink-soft);
+      line-height: 1.65;
+    }
+    .service-card ul {
+      list-style: none;
+      margin-top: 1rem;
+    }
+    .service-card ul li {
+      font-size: .82rem;
+      color: var(--ink-soft);
+      padding: .3rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .service-card ul li:last-child { border-bottom: 1px solid var(--rule); }
+
+    /* ── Work ── */
+    .work-intro {
+      max-width: 56ch;
+      color: var(--ink-soft);
+      font-size: .95rem;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+    }
+    .work-card {
+      background: var(--bg-alt);
+      border: 1px solid var(--rule);
+      overflow: hidden;
+    }
+    .work-card-img {
+      width: 100%;
+      aspect-ratio: 16/9;
+      background: var(--accent-lt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+    }
+    .work-card-body { padding: 1.25rem 1.5rem 1.5rem; }
+    .work-card-client {
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: .4rem;
+    }
+    .work-card h3 {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      margin-bottom: .5rem;
+      letter-spacing: -.01em;
+    }
+    .work-card p {
+      font-size: .85rem;
+      color: var(--ink-soft);
+      line-height: 1.6;
+    }
+    .work-card-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .4rem;
+      margin-top: .85rem;
+    }
+    .tag {
+      font-size: .72rem;
+      padding: .2rem .65rem;
+      background: var(--bg);
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+      border-radius: 2px;
+    }
+
+    /* ── About ── */
+    .about { background: var(--bg-alt); }
+    .about-grid {
+      display: grid;
+      grid-template-columns: 5fr 4fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .about-body p {
+      color: var(--ink-soft);
+      font-size: .97rem;
+      line-height: 1.8;
+      margin-bottom: 1.1rem;
+      max-width: 58ch;
+    }
+    .about-body p:last-child { margin-bottom: 0; }
+    .about-aside {}
+    .credential {
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+    }
+    .credential:first-child { border-top: 1px solid var(--rule); }
+    .credential-role {
+      font-weight: 500;
+      font-size: .9rem;
+      margin-bottom: .2rem;
+    }
+    .credential-place {
+      font-size: .82rem;
+      color: var(--ink-soft);
+    }
+
+    /* ── Contact ── */
+    .contact-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-lede {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      line-height: 1.25;
+      letter-spacing: -.01em;
+      margin-bottom: 1rem;
+    }
+    .contact-sub {
+      font-size: .9rem;
+      color: var(--ink-soft);
+      line-height: 1.7;
+      max-width: 44ch;
+    }
+    .contact-email {
+      display: inline-block;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: var(--accent);
+      font-weight: 500;
+      border-bottom: 1px solid var(--accent);
+      padding-bottom: 2px;
+    }
+    form { display: flex; flex-direction: column; gap: 1rem; }
+    label {
+      font-size: .78rem;
+      font-weight: 500;
+      letter-spacing: .05em;
+      display: block;
+      margin-bottom: .3rem;
+      color: var(--ink-soft);
+      text-transform: uppercase;
+    }
+    input, textarea, select {
+      width: 100%;
+      padding: .7rem .9rem;
+      border: 1px solid var(--rule);
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: .9rem;
+      border-radius: 2px;
+      outline: none;
+      transition: border-color .15s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--accent); }
+    textarea { min-height: 120px; resize: vertical; }
+    .form-field { display: flex; flex-direction: column; }
+    form .btn { align-self: flex-start; margin-top: .25rem; }
+
+    /* ── Footer ── */
+    footer {
+      border-top: 1px solid var(--rule);
+      padding: 2rem 0;
+    }
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: .78rem;
+      color: var(--ink-soft);
+    }
+    .footer-logo {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 800px) {
+      .hero-grid, .services-grid, .work-grid,
+      .about-grid, .contact-inner {
+        grid-template-columns: 1fr;
+      }
+      .hero-aside {
+        padding-left: 0;
+        border-left: none;
+        border-top: 1px solid var(--rule);
+        padding-top: 2rem;
+        display: flex;
+        gap: 2rem;
+        flex-wrap: wrap;
+      }
+      .nav-links { gap: 1rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Nav -->
+<nav>
+  <div class="wrap nav-inner">
+    <span class="nav-logo">Kiley Fasano</span>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#work">Work</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact" class="nav-cta">Let's talk</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">Design · Production · Consulting</p>
+        <h1>Precision at scale.<br><em>From concept<br>to launch.</em></h1>
+        <p class="hero-body">I help companies build, brand, and ship — with the operational rigor and design sensibility that comes from over a decade leading product launches at Apple.</p>
+        <div>
+          <a href="#contact" class="btn">Work with me</a>
+          <a href="#work" class="btn btn-ghost">See the work</a>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <div class="hero-stat">
+          <div class="hero-stat-num">10+</div>
+          <div class="hero-stat-label">Years at Apple leading interactive<br>product launch campaigns</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">Global</div>
+          <div class="hero-stat-label">High-volume localization across<br>markets, languages, and platforms</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-num">End-to-end</div>
+          <div class="hero-stat-label">From brand identity and web design<br>to production execution and automation</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="services">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>What I do</h2>
+      <span class="section-tag">Services</span>
+    </div>
+    <div class="services-grid">
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9 17.25v1.007a3 3 0 01-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0115 18.257V17.25m6-12V15a2.25 2.25 0 01-2.25 2.25H5.25A2.25 2.25 0 013 15V5.25m18 0A2.25 2.25 0 0018.75 3H5.25A2.25 2.25 0 003 5.25m18 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 7.41A2.25 2.25 0 012.25 5.493V5.25"/>
+        </svg>
+        <h3>Operational Consulting</h3>
+        <p>Getting a business off the ground — or untangling one that's grown faster than its processes — requires someone who's done it at scale. I build the infrastructure so your team can move.</p>
+        <ul>
+          <li>Workflow design & process documentation</li>
+          <li>Project & production pipeline setup</li>
+          <li>Vendor and team onboarding</li>
+          <li>Automation strategy</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"/>
+        </svg>
+        <h3>Branding & Marketing</h3>
+        <p>Brand is the sum of every decision — visual, verbal, and strategic. I bring a designer's eye and a production lead's discipline to help you build an identity that holds together across every touchpoint.</p>
+        <ul>
+          <li>Brand identity & visual systems</li>
+          <li>Web design & interactive media</li>
+          <li>Marketing collateral & campaigns</li>
+          <li>Tradeshow & event materials</li>
+        </ul>
+      </div>
+
+      <div class="service-card">
+        <svg class="service-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z"/>
+        </svg>
+        <h3>Digital Production</h3>
+        <p>High-volume, deadline-driven, multi-market production is a craft. I've run it at the highest level — across web, online advertising, and localization — and I bring that precision to every engagement.</p>
+        <ul>
+          <li>Website production & QA</li>
+          <li>Online ad production at scale</li>
+          <li>Localization & multi-market rollouts</li>
+          <li>Production automation & tooling</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Work -->
+<section id="work">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Selected work</h2>
+      <span class="section-tag">Portfolio</span>
+    </div>
+    <p class="work-intro">A selection of projects from over fifteen years in design, production, and digital. Apple work shown represents publicly available pages from 2017–2019.</p>
+    <div class="work-grid">
+
+      <div class="work-card">
+        <div class="work-card-img">Apple Watch — apple.com</div>
+        <div class="work-card-body">
+          <p class="work-card-client">Apple</p>
+          <h3>Apple Watch Product Pages</h3>
+          <p>Graphic production lead on interactive Apple Watch pages for apple.com. Managed high-volume localization across global markets, coordinating production pipelines for simultaneous multilingual launch.</p>
+          <div class="work-card-tags">
+            <span class="tag">Web Production</span>
+            <span class="tag">Localization</span>
+            <span class="tag">Interactive</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-img">Product Launch Campaigns</div>
+        <div class="work-card-body">
+          <p class="work-card-client">Apple</p>
+          <h3>Interactive Product Launch</h3>
+          <p>Led graphic production across interactive launch campaigns for apple.com. Oversaw end-to-end execution from asset creation through QA, working across cross-functional teams at scale.</p>
+          <div class="work-card-tags">
+            <span class="tag">Campaign Production</span>
+            <span class="tag">QA</span>
+            <span class="tag">Cross-functional</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-img">Online Advertising</div>
+        <div class="work-card-body">
+          <p class="work-card-client">Kakui</p>
+          <h3>Digital Ad Production</h3>
+          <p>Produced websites and online advertising campaigns, managing production workflows from brief through delivery. Built systems for repeatable, high-quality output across clients and formats.</p>
+          <div class="work-card-tags">
+            <span class="tag">Online Ads</span>
+            <span class="tag">Web Design</span>
+            <span class="tag">Production</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-card-img">Brand & Tradeshow</div>
+        <div class="work-card-body">
+          <p class="work-card-client">Various Clients</p>
+          <h3>Branding & Tradeshow Design</h3>
+          <p>Graphic design, brand identity, and tradeshow planning across industries. Designed print, environmental, and digital materials — managing projects from concept through production and installation.</p>
+          <div class="work-card-tags">
+            <span class="tag">Brand Identity</span>
+            <span class="tag">Print</span>
+            <span class="tag">Tradeshow</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="about" id="about">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>About</h2>
+      <span class="section-tag">Background</span>
+    </div>
+    <div class="about-grid">
+      <div class="about-body">
+        <p>I'm Kiley Fasano — a designer, production lead, and consultant based in California with over fifteen years of experience spanning graphic design, web, interactive media, and large-scale digital production.</p>
+        <p>My career took shape at the intersection of design craft and operational rigor. After studying Web Design and Interactive Media at the Art Institute of Colorado, I spent years in graphic design and web design before moving into digital production — building the systems and workflows that make high-volume creative output possible.</p>
+        <p>I spent over a decade at Apple as a Graphic Production Lead, working across interactive product launch campaigns for apple.com. Half of that as a contractor, half as full-time — giving me perspective on both sides of how creative organizations work. My focus was high-volume, multi-market localization: coordinating complex production pipelines that had to ship flawlessly, simultaneously, across the globe.</p>
+        <p>Today I work with companies that need both design sensibility and operational discipline — whether that means helping a new business get off the ground, shaping a brand identity, or bringing production precision to a digital team that's outgrown its processes.</p>
+      </div>
+      <div class="about-aside">
+        <div class="credential">
+          <div class="credential-role">Graphic Production Lead</div>
+          <div class="credential-place">Apple · 10+ years</div>
+        </div>
+        <div class="credential">
+          <div class="credential-role">Web & Ad Production</div>
+          <div class="credential-place">Kakui</div>
+        </div>
+        <div class="credential">
+          <div class="credential-role">Graphic & Web Design, Tradeshow</div>
+          <div class="credential-place">Various Clients · California</div>
+        </div>
+        <div class="credential">
+          <div class="credential-role">Web Design & Interactive Media</div>
+          <div class="credential-place">Art Institute of Colorado</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact">
+  <div class="wrap">
+    <div class="section-header">
+      <h2>Let's talk</h2>
+      <span class="section-tag">Contact</span>
+    </div>
+    <div class="contact-inner">
+      <div>
+        <p class="contact-lede">Ready to build something that works — and looks the part?</p>
+        <p class="contact-sub">Whether you're starting from scratch, scaling up, or just need a second set of expert eyes — I'd love to hear what you're working on. I take on a limited number of projects at a time so I can give each one proper attention.</p>
+        <a href="mailto:kileyfasano@mac.com" class="contact-email">kileyfasano@mac.com</a>
+      </div>
+      <form onsubmit="handleSubmit(event)">
+        <div class="form-field">
+          <label for="name">Name</label>
+          <input type="text" id="name" placeholder="Your name" />
+        </div>
+        <div class="form-field">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="you@example.com" />
+        </div>
+        <div class="form-field">
+          <label for="interest">I'm interested in</label>
+          <select id="interest">
+            <option value="">Select a service…</option>
+            <option>Operational Consulting</option>
+            <option>Branding & Marketing</option>
+            <option>Digital Production</option>
+            <option>Something else</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="message">Tell me about your project</label>
+          <textarea id="message" placeholder="What are you working on?"></textarea>
+        </div>
+        <button type="submit" class="btn">Send message</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="wrap footer-inner">
+    <span class="footer-logo">Kiley Fasano</span>
+    <span>© 2026 · Based in California</span>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target.querySelector('button[type="submit"]');
+    btn.textContent = 'Sent!';
+    btn.style.opacity = '.6';
+    btn.disabled = true;
+  }
+</script>
+
+</body>
+</html>
