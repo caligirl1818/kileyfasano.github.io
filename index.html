@@ -6,7 +6,7 @@
   <title>Kiley Fasano — Design, Production & Consulting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Jost:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     /* ── Tokens ── */
     :root {
@@ -14,12 +14,14 @@
       --ink-soft:  #555550;
       --bg:        #f7f6f2;
       --bg-alt:    #eeeae2;
-      --accent:    #2a52a0;   /* deep slate-blue — precise, credible, Apple-adjacent */
-      --accent-lt: #dce5f5;
+      --accent:    #c1502e;   /* terracotta — warm, confident, matches the [KF] mark */
+      --accent-lt: #f3e2d8;
       --rule:      #d4d0c8;
       --white:     #ffffff;
-      --serif:     'DM Serif Display', Georgia, serif;
+      --serif:     'Fraunces', Georgia, serif;
       --sans:      'DM Sans', system-ui, sans-serif;
+      --wordmark:  'Jost', system-ui, sans-serif;
+      --mark:      'Space Grotesk', system-ui, sans-serif;
       --max:       1160px;
       --gap:       clamp(2rem, 5vw, 4rem);
     }
@@ -29,8 +31,8 @@
         --ink-soft: #a09c92;
         --bg:       #181714;
         --bg-alt:   #211f1b;
-        --accent:   #6b8fd4;
-        --accent-lt:#1e2d4a;
+        --accent:   #e4572e;
+        --accent-lt:#3a2118;
         --rule:     #333028;
         --white:    #211f1b;
       }
@@ -40,8 +42,8 @@
       --ink-soft: #a09c92;
       --bg:       #181714;
       --bg-alt:   #211f1b;
-      --accent:   #6b8fd4;
-      --accent-lt:#1e2d4a;
+      --accent:   #e4572e;
+      --accent-lt:#3a2118;
       --rule:     #333028;
       --white:    #211f1b;
     }
@@ -83,10 +85,21 @@
       height: 60px;
     }
     .nav-logo {
-      font-family: var(--serif);
-      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      font-family: var(--wordmark);
+      font-size: 1rem;
+      font-weight: 500;
       letter-spacing: .01em;
     }
+    .logo-mark {
+      font-family: var(--mark);
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: var(--accent);
+    }
+    .logo-mark b { font-weight: 700; }
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -406,8 +419,12 @@
       color: var(--ink-soft);
     }
     .footer-logo {
-      font-family: var(--serif);
-      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-family: var(--wordmark);
+      font-size: .95rem;
+      font-weight: 500;
       color: var(--ink);
     }
 
@@ -438,7 +455,7 @@
 <!-- Nav -->
 <nav>
   <div class="wrap nav-inner">
-    <span class="nav-logo">Kiley Fasano</span>
+    <span class="nav-logo"><span class="logo-mark">[<b>KF</b>]</span>Kiley Fasano</span>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -686,7 +703,7 @@
 <!-- Footer -->
 <footer>
   <div class="wrap footer-inner">
-    <span class="footer-logo">Kiley Fasano</span>
+    <span class="footer-logo"><span class="logo-mark">[<b>KF</b>]</span>Kiley Fasano</span>
     <span>© 2026 · Based in California</span>
   </div>
 </footer>
