@@ -282,6 +282,20 @@
       font-weight: 500;
       letter-spacing: .05em;
       text-transform: uppercase;
+      overflow: hidden;
+    }
+    .work-card-img.has-photos {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--rule);
+    }
+    .work-card-img.has-photos img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
     }
     .work-card-body { padding: 1.25rem 1.5rem 1.5rem; }
     .work-card-client {
@@ -562,7 +576,10 @@
     <div class="work-grid">
 
       <div class="work-card">
-        <div class="work-card-img">Apple Watch — apple.com</div>
+        <div class="work-card-img has-photos">
+          <img src="images/work/apple-watchos5-launch.jpg" alt="watchOS 5 product launch page on apple.com" loading="lazy" />
+          <img src="images/work/apple-watch-studio.jpg" alt="Apple Watch Studio interactive page on apple.com" loading="lazy" />
+        </div>
         <div class="work-card-body">
           <p class="work-card-client">Apple</p>
           <h3>Interactive Product Launch</h3>
@@ -577,7 +594,10 @@
       </div>
 
       <div class="work-card">
-        <div class="work-card-img">Global Channel Partners</div>
+        <div class="work-card-img has-photos">
+          <img src="images/work/apple-watch-cellular-siri-faces.jpg" alt="Apple Watch feature page — Cellular, Siri, and Watch Faces" loading="lazy" />
+          <img src="images/work/apple-watch-gps-music-swimproof.jpg" alt="Apple Watch feature page — GPS, streaming music, and swimproof" loading="lazy" />
+        </div>
         <div class="work-card-body">
           <p class="work-card-client">Apple</p>
           <h3>Channel Partner Marketing</h3>
