@@ -82,21 +82,38 @@
       justify-content: space-between;
       height: 60px;
     }
-    .wordmark {
-      display: inline-block;
-      font-family: 'Fraunces', Georgia, serif;
-      font-size: 1.875rem;
-      line-height: 1;
-      letter-spacing: -0.01em;
+    .logo-lockup {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
       color: var(--ink);
       transition: opacity .15s;
     }
-    .wordmark:hover { opacity: .85; }
-    .wordmark .first { font-weight: 600; }
-    .wordmark .last { font-style: italic; font-weight: 400; color: var(--ink-soft); }
-    .footer-logo.wordmark { font-size: 1.25rem; }
+    .logo-lockup:hover { opacity: .85; }
+    .logo-kf {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.75rem;
+      line-height: 1;
+    }
+    .logo-kf .k { font-weight: 700; }
+    .logo-kf .f { font-style: italic; font-weight: 500; color: var(--accent); }
+    .logo-divider {
+      width: 1px;
+      height: 1.4rem;
+      background: var(--rule);
+    }
+    .logo-name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.125rem;
+      font-weight: 400;
+      letter-spacing: -0.005em;
+    }
+    .logo-lockup.logo-lockup--sm .logo-kf { font-size: 1.3rem; }
+    .logo-lockup.logo-lockup--sm .logo-name { font-size: .95rem; }
+    .logo-lockup.logo-lockup--sm .logo-divider { height: 1.05rem; }
     @media (max-width: 800px) {
-      .wordmark { font-size: 1.625rem; }
+      .logo-divider, .logo-name { display: none; }
+      .logo-kf { font-size: 1.6rem; }
     }
     .nav-links {
       display: flex;
@@ -462,7 +479,11 @@
 <!-- Nav -->
 <nav>
   <div class="wrap nav-inner">
-    <a href="/" class="wordmark"><span class="first">Kiley</span> <span class="last">Fasano</span></a>
+    <a href="/" class="logo-lockup">
+      <span class="logo-kf"><span class="k">K</span><span class="f">F</span></span>
+      <span class="logo-divider"></span>
+      <span class="logo-name">Kiley Fasano</span>
+    </a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -715,7 +736,11 @@
 <!-- Footer -->
 <footer>
   <div class="wrap footer-inner">
-    <a href="/" class="wordmark footer-logo"><span class="first">Kiley</span> <span class="last">Fasano</span></a>
+    <a href="/" class="logo-lockup logo-lockup--sm">
+      <span class="logo-kf"><span class="k">K</span><span class="f">F</span></span>
+      <span class="logo-divider"></span>
+      <span class="logo-name">Kiley Fasano</span>
+    </a>
     <span>© 2026 · Based in California</span>
   </div>
 </footer>
