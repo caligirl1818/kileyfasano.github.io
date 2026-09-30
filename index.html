@@ -6,7 +6,7 @@
   <title>Kiley Fasano — Design, Production & Consulting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Jost:wght@400;500;600&family=Space+Grotesk:wght@500;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Jost:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     /* ── Tokens ── */
     :root {
@@ -21,7 +21,6 @@
       --serif:     'Fraunces', Georgia, serif;
       --sans:      'DM Sans', system-ui, sans-serif;
       --wordmark:  'Jost', system-ui, sans-serif;
-      --mark:      'Space Grotesk', system-ui, sans-serif;
       --max:       1160px;
       --gap:       clamp(2rem, 5vw, 4rem);
     }
@@ -85,32 +84,11 @@
       height: 60px;
     }
     .nav-logo {
-      display: flex;
-      align-items: center;
-      gap: .55rem;
       font-family: var(--wordmark);
       font-size: 1rem;
       font-weight: 500;
       letter-spacing: .01em;
     }
-    .logo-mark {
-      display: inline-flex;
-      align-items: center;
-      font-family: var(--mark);
-      font-size: .8rem;
-      font-weight: 700;
-      color: var(--accent);
-      line-height: 1;
-    }
-    .logo-bracket {
-      width: 3px;
-      height: .78em;
-      box-sizing: border-box;
-      border-top: 1.5px solid currentColor;
-      border-bottom: 1.5px solid currentColor;
-    }
-    .logo-bracket.l { border-left: 1.5px solid currentColor; margin-right: 3px; }
-    .logo-bracket.r { border-right: 1.5px solid currentColor; margin-left: 3px; }
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -164,6 +142,10 @@
     }
     .btn {
       display: inline-block;
+      -webkit-appearance: none;
+      appearance: none;
+      border: none;
+      cursor: pointer;
       padding: .75rem 1.75rem;
       background: var(--accent);
       color: #fff;
@@ -301,7 +283,7 @@
       gap: 2px;
       background: var(--rule);
     }
-    .work-card-img.has-photos img {
+    .work-card-img img {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -444,9 +426,6 @@
       color: var(--ink-soft);
     }
     .footer-logo {
-      display: flex;
-      align-items: center;
-      gap: .5rem;
       font-family: var(--wordmark);
       font-size: .95rem;
       font-weight: 500;
@@ -480,7 +459,7 @@
 <!-- Nav -->
 <nav>
   <div class="wrap nav-inner">
-    <span class="nav-logo"><span class="logo-mark" aria-hidden="true"><span class="logo-bracket l"></span>KF<span class="logo-bracket r"></span></span>Kiley Fasano</span>
+    <span class="nav-logo">Kiley Fasano</span>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -587,9 +566,8 @@
     <div class="work-grid">
 
       <div class="work-card">
-        <div class="work-card-img has-photos">
+        <div class="work-card-img">
           <img src="images/work/apple-watchos5-launch.jpg" alt="watchOS 5 product launch page on apple.com" loading="lazy" />
-          <img src="images/work/apple-watch-studio.jpg" alt="Apple Watch Studio interactive page on apple.com" loading="lazy" />
         </div>
         <div class="work-card-body">
           <p class="work-card-client">Apple</p>
@@ -734,7 +712,7 @@
 <!-- Footer -->
 <footer>
   <div class="wrap footer-inner">
-    <span class="footer-logo"><span class="logo-mark" aria-hidden="true"><span class="logo-bracket l"></span>KF<span class="logo-bracket r"></span></span>Kiley Fasano</span>
+    <span class="footer-logo">Kiley Fasano</span>
     <span>© 2026 · Based in California</span>
   </div>
 </footer>
