@@ -94,12 +94,23 @@
       letter-spacing: .01em;
     }
     .logo-mark {
+      display: inline-flex;
+      align-items: center;
       font-family: var(--mark);
-      font-size: 1.15rem;
-      font-weight: 400;
+      font-size: .8rem;
+      font-weight: 700;
       color: var(--accent);
+      line-height: 1;
     }
-    .logo-mark b { font-weight: 700; }
+    .logo-bracket {
+      width: 3px;
+      height: .78em;
+      box-sizing: border-box;
+      border-top: 1.5px solid currentColor;
+      border-bottom: 1.5px solid currentColor;
+    }
+    .logo-bracket.l { border-left: 1.5px solid currentColor; margin-right: 3px; }
+    .logo-bracket.r { border-right: 1.5px solid currentColor; margin-left: 3px; }
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -469,7 +480,7 @@
 <!-- Nav -->
 <nav>
   <div class="wrap nav-inner">
-    <span class="nav-logo"><span class="logo-mark">[<b>KF</b>]</span>Kiley Fasano</span>
+    <span class="nav-logo"><span class="logo-mark" aria-hidden="true"><span class="logo-bracket l"></span>KF<span class="logo-bracket r"></span></span>Kiley Fasano</span>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -723,7 +734,7 @@
 <!-- Footer -->
 <footer>
   <div class="wrap footer-inner">
-    <span class="footer-logo"><span class="logo-mark">[<b>KF</b>]</span>Kiley Fasano</span>
+    <span class="footer-logo"><span class="logo-mark" aria-hidden="true"><span class="logo-bracket l"></span>KF<span class="logo-bracket r"></span></span>Kiley Fasano</span>
     <span>© 2026 · Based in California</span>
   </div>
 </footer>
