@@ -6,7 +6,7 @@
   <title>Kiley Fasano — Design, Production & Consulting</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Jost:wght@400;500;600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
   <style>
     /* ── Tokens ── */
     :root {
@@ -20,7 +20,6 @@
       --white:     #ffffff;
       --serif:     'Fraunces', Georgia, serif;
       --sans:      'DM Sans', system-ui, sans-serif;
-      --wordmark:  'Jost', system-ui, sans-serif;
       --max:       1160px;
       --gap:       clamp(2rem, 5vw, 4rem);
     }
@@ -83,11 +82,21 @@
       justify-content: space-between;
       height: 60px;
     }
-    .nav-logo {
-      font-family: var(--wordmark);
-      font-size: 1rem;
-      font-weight: 500;
-      letter-spacing: .01em;
+    .wordmark {
+      display: inline-block;
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 1.875rem;
+      line-height: 1;
+      letter-spacing: -0.01em;
+      color: var(--ink);
+      transition: opacity .15s;
+    }
+    .wordmark:hover { opacity: .85; }
+    .wordmark .first { font-weight: 600; }
+    .wordmark .last { font-style: italic; font-weight: 400; color: var(--ink-soft); }
+    .footer-logo.wordmark { font-size: 1.25rem; }
+    @media (max-width: 800px) {
+      .wordmark { font-size: 1.625rem; }
     }
     .nav-links {
       display: flex;
@@ -425,12 +434,6 @@
       font-size: .78rem;
       color: var(--ink-soft);
     }
-    .footer-logo {
-      font-family: var(--wordmark);
-      font-size: .95rem;
-      font-weight: 500;
-      color: var(--ink);
-    }
 
     /* ── Responsive ── */
     @media (max-width: 800px) {
@@ -459,7 +462,7 @@
 <!-- Nav -->
 <nav>
   <div class="wrap nav-inner">
-    <span class="nav-logo">Kiley Fasano</span>
+    <a href="/" class="wordmark"><span class="first">Kiley</span> <span class="last">Fasano</span></a>
     <ul class="nav-links">
       <li><a href="#services">Services</a></li>
       <li><a href="#work">Work</a></li>
@@ -712,7 +715,7 @@
 <!-- Footer -->
 <footer>
   <div class="wrap footer-inner">
-    <span class="footer-logo">Kiley Fasano</span>
+    <a href="/" class="wordmark footer-logo"><span class="first">Kiley</span> <span class="last">Fasano</span></a>
     <span>© 2026 · Based in California</span>
   </div>
 </footer>
